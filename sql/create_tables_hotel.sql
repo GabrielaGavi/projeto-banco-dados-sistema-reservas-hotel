@@ -25,7 +25,7 @@ CREATE TABLE reserva (
     status VARCHAR2(20) NOT NULL CHECK (
         status IN ('Ativa', 'Cancelada', 'Finalizada')
     ),
-    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    criado_em TIMESTAMP DEFAULT SYSTIMESTAMP,
     CONSTRAINT fk_reserva_hospede FOREIGN KEY (cpf)
         REFERENCES hospede(cpf),
     CONSTRAINT fk_reserva_quarto FOREIGN KEY (numero_quarto)
