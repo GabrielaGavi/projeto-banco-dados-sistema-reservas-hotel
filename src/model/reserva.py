@@ -83,8 +83,10 @@ class Reserva:
     
     def to_string(self) -> str:
         return (
-            f"Reserva {self.__id_reserva} - CPF: {self.__cpf} - "
-            f"Quarto: {self.__numero_quarto} - Check-in: {self.__data_checkin} - "
-            f"Check-out: {self.__data_checkout} - Hóspedes: {self.__qtd_hospedes} - "
-            f"Total: R${self.__valor_total:.2f} - Status: {self.__status} - Criada em: {self.__criado_em}"
+            f"Reserva {self.__id_reserva} - "
+            f"Hóspede: {self.__hospede.get_nome()} ({self.__hospede.get_cpf()}) - "
+            f"Quarto: {self.__quarto.get_numero_quarto()} ({self.__quarto.get_tipo()}) - "
+            f"Check-in: {self.__data_checkin} - Check-out: {self.__data_checkout} - "
+            f"Hóspedes: {self.__qtd_hospedes} - Total: R${self.__valor_total:.2f} - "
+            f"Status: {self.__status} - Criada em: {self.__criado_em}"
         )
