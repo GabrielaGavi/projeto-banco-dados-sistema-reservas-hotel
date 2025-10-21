@@ -1,9 +1,12 @@
+from model.hospede import Hospede
+from model.quarto import Quarto
+
 class Reserva:
     def __init__(
         self,
         id_reserva: int = None,
-        cpf: str = None,
-        numero_quarto: int = None,
+        hospede: Hospede = None,
+        quarto: Quarto = None,
         data_checkin: str = None,
         data_checkout: str = None,
         qtd_hospedes: int = None,
@@ -12,8 +15,8 @@ class Reserva:
         criado_em: str = None
     ):
         self.set_id_reserva(id_reserva)
-        self.set_cpf(cpf)
-        self.set_numero_quarto(numero_quarto)
+        self.set_hospede(hospede)
+        self.set_quarto(quarto)
         self.set_data_checkin(data_checkin)
         self.set_data_checkout(data_checkout)
         self.set_qtd_hospedes(qtd_hospedes)
@@ -25,11 +28,11 @@ class Reserva:
     def get_id_reserva(self) -> int:
         return self.__id_reserva
 
-    def get_cpf(self) -> str:
-        return self.__cpf
+    def get_hospede(self) -> Hospede:
+        return self.__hospede
 
-    def get_numero_quarto(self) -> int:
-        return self.__numero_quarto
+    def get_quarto(self) -> Quarto:
+        return self.__quarto
 
     def get_data_checkin(self) -> str:
         return self.__data_checkin
@@ -53,11 +56,11 @@ class Reserva:
     def set_id_reserva(self, id_reserva: int):
         self.__id_reserva = id_reserva
 
-    def set_cpf(self, cpf: str):
-        self.__cpf = cpf
+    def set_hospede(self, hospede: Hospede):
+        self.__hospede = hospede
 
-    def set_numero_quarto(self, numero_quarto: int):
-        self.__numero_quarto = numero_quarto
+    def set_quarto(self, quarto: Quarto):
+        self.__quarto = quarto
 
     def set_data_checkin(self, data_checkin: str):
         self.__data_checkin = data_checkin
