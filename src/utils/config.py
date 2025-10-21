@@ -8,7 +8,7 @@ MENU_PRINCIPAL = """Menu Principal
 
 MENU_RELATORIOS = """Relatórios
 1 - Reservas por Status
-2 - Reservas Detalhadas (JOIN)
+2 - Reservas Detalhadas
 3 - Reservas por Mês
 4 - Listagem de Hóspedes
 0 - Voltar
@@ -32,4 +32,4 @@ def clear_console(wait_time: int = 3):
     import os
     from time import sleep
     sleep(wait_time)
-    os.system("clear")  
+    os.system("cls")  #obs.: cls para windows e clear para linux

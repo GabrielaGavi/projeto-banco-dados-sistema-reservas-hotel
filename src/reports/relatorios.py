@@ -1,16 +1,33 @@
 from conexion.oracle_queries import OracleQueries
+import os
 
 class Relatorios:
     def __init__(self):
+        
+        os.system("cls") #obs.: "clear" para linux e "cls" para windows
+        
         self.oracle = OracleQueries()
 
     def executar_relatorio(self, caminho_sql: str):
         
+        self.oracle.connect()
+
+        
         with open(caminho_sql, "r") as f:
             query = f.read()
-        self.oracle.connect()
+
+        
         df = self.oracle.sqlToDataFrame(query)
-        print(df)
+
+        if df.empty:
+            print("\n### Nenhum dado encontrado para este relatório. ###\n")
+        else:
+            print(df.to_string(index=False))
+
+        
+        self.oracle.close()
+
+        input("\nPressione Enter para voltar ao menu...\n")
         return df
 
     def relatorio_reservas_por_status(self):

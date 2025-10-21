@@ -13,7 +13,7 @@ class OracleQueries:
         self.service_name = "XEPDB1"
 
         
-        with open("conexion/passphrase/authentication.oracle", "r") as f:
+        with open("src/conexion/passphrase/authentication.oracle", "r") as f:
             self.user, self.passwd = f.read().strip().split(",")
 
         

@@ -1,5 +1,6 @@
 from model.hospede import Hospede
 from conexion.oracle_queries import OracleQueries
+from datetime import datetime
 
 class Controller_Hospede:
     def __init__(self):
@@ -16,12 +17,12 @@ class Controller_Hospede:
         if self.verifica_existencia_hospede(oracle, cpf):
             nome = input("Nome (Novo): ")
             telefone = input("Telefone (Novo): ")
-            data_cadastro = input("Data de cadastro (AAAA-MM-DD): ")
+            data_cadastro = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             
             oracle.write(f"""
                 INSERT INTO hospede (cpf, nome, telefone, data_cadastro)
-                VALUES ('{cpf}', '{nome}', '{telefone}', TO_DATE('{data_cadastro}', 'YYYY-MM-DD'))
+                VALUES ('{cpf}', '{nome}', '{telefone}', TO_DATE('{data_cadastro}', 'YYYY-MM-DD HH24:MI:SS'))
             """)
 
             

@@ -4,4 +4,4 @@ SELECT
     SUM(r.valor_total) AS soma_valores
 FROM reserva r
 GROUP BY TO_CHAR(r.criado_em, 'MM/YYYY')
-ORDER BY TO_DATE(TO_CHAR(r.criado_em, 'MM/YYYY'), 'MM/YYYY');
+ORDER BY TO_DATE(TO_CHAR(r.criado_em, 'MM/YYYY'), 'MM/YYYY')

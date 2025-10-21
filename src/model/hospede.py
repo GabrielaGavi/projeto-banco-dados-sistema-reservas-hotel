@@ -30,7 +30,11 @@ class Hospede:
 
     def set_data_cadastro(self, data_cadastro: str) -> None:
         self.__data_cadastro = data_cadastro
+        
+    def formatar_cpf(self):
+        cpf = str(self.__cpf).zfill(11)
+        return f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"
 
     
     def to_string(self) -> str:
-        return f"{self.__cpf} - {self.__nome} - {self.__telefone} - {self.__data_cadastro}"
+        return f"{self.formatar_cpf()} - {self.__nome} - {self.__telefone} - {self.__data_cadastro}"

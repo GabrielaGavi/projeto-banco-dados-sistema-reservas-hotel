@@ -9,4 +9,4 @@ SELECT
 FROM reserva r
 JOIN hospede h ON r.cpf = h.cpf
 JOIN quarto q ON r.numero_quarto = q.numero_quarto
-ORDER BY r.data_checkin;
+ORDER BY r.data_checkin
