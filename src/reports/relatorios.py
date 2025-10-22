@@ -1,10 +1,10 @@
 from conexion.oracle_queries import OracleQueries
-import os
+from utils.config import clear_console
 
 class Relatorios:
     def __init__(self):
         
-        os.system("clear") #obs.: "clear" para linux e "cls" para windows
+        clear_console()
         
         self.oracle = OracleQueries()
 

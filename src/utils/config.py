@@ -32,4 +32,8 @@ def clear_console(wait_time: int = 3):
     import os
     from time import sleep
     sleep(wait_time)
-    os.system("clear")  #obs.: cls para windows e clear para linux
+    
+    if (os.name == 'nt'):
+        os.system('cls')
+    else:
+        os.system('clear')
