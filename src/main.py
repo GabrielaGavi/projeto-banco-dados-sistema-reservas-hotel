@@ -23,28 +23,89 @@ def reports(opcao_relatorio: int = 0):
         relatorio.relatorio_hospedes()
 
 def inserir(opcao_inserir: int = 0):
-    if opcao_inserir == 1:
-        ctrl_hospede.inserir_hospede()
-    elif opcao_inserir == 2:
-        ctrl_quarto.inserir_quarto()
-    elif opcao_inserir == 3:
-        ctrl_reserva.inserir_reserva()
+    
+    current = opcao_inserir
+    while True:
+        if current == 1:
+            ctrl_hospede.inserir_hospede()
+        elif current == 2:
+            ctrl_quarto.inserir_quarto()
+        elif current == 3:
+            ctrl_reserva.inserir_reserva()
+        else:
+            print("Opção de entidade inválida.")
+
+        resp = input("\nDeseja inserir mais algum registro? (S/N): ").strip().upper()
+        if resp != 'S':
+            break
+
+        
+        resp2 = input("Continuar na mesma entidade? (S para sim / N para escolher outra): ").strip().upper()
+        if resp2 == 'S':
+            continue
+        else:
+            print(config.MENU_ENTIDADES)
+            try:
+                current = int(input("Escolha uma opção [1-3]: "))
+            except ValueError:
+                print("Opção inválida. Voltando ao menu principal.")
+                break
 
 def atualizar(opcao_atualizar: int = 0):
-    if opcao_atualizar == 1:
-        ctrl_hospede.atualizar_hospede()
-    elif opcao_atualizar == 2:
-        ctrl_quarto.atualizar_quarto()
-    elif opcao_atualizar == 3:
-        ctrl_reserva.atualizar_reserva()
+    
+    current = opcao_atualizar
+    while True:
+        if current == 1:
+            ctrl_hospede.atualizar_hospede_interactive()
+        elif current == 2:
+            ctrl_quarto.atualizar_quarto_interactive()
+        elif current == 3:
+            ctrl_reserva.atualizar_reserva_interactive()
+        else:
+            print("Opção de entidade inválida.")
+
+        resp = input("\nDeseja atualizar mais algum registro? (S/N): ").strip().upper()
+        if resp != 'S':
+            break
+
+        resp2 = input("Continuar na mesma entidade? (S para sim / N para escolher outra): ").strip().upper()
+        if resp2 == 'S':
+            continue
+        else:
+            print(config.MENU_ENTIDADES)
+            try:
+                current = int(input("Escolha uma opção [1-3]: "))
+            except ValueError:
+                print("Opção inválida. Voltando ao menu principal.")
+                break
 
 def excluir(opcao_excluir: int = 0):
-    if opcao_excluir == 1:
-        ctrl_hospede.excluir_hospede()
-    elif opcao_excluir == 2:
-        ctrl_quarto.excluir_quarto()
-    elif opcao_excluir == 3:
-        ctrl_reserva.excluir_reserva()
+    
+    current = opcao_excluir
+    while True:
+        if current == 1:
+            ctrl_hospede.excluir_hospede_interactive()
+        elif current == 2:
+            ctrl_quarto.excluir_quarto_interactive()
+        elif current == 3:
+            ctrl_reserva.excluir_reserva_interactive()
+        else:
+            print("Opção de entidade inválida.")
+
+        resp = input("\nDeseja excluir mais algum registro? (S/N): ").strip().upper()
+        if resp != 'S':
+            break
+
+        resp2 = input("Continuar na mesma entidade? (S para sim / N para escolher outra): ").strip().upper()
+        if resp2 == 'S':
+            continue
+        else:
+            print(config.MENU_ENTIDADES)
+            try:
+                current = int(input("Escolha uma opção [1-3]: "))
+            except ValueError:
+                print("Opção inválida. Voltando ao menu principal.")
+                break
 
 def run():
     
