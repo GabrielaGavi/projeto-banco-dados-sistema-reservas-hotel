@@ -14,9 +14,9 @@ class Controller_Quarto:
         numero_quarto = input("Número do quarto (Novo): ")
 
         if self.verifica_existencia_quarto(oracle, numero_quarto):
-            tipo = input("Tipo do quarto (ex: solteiro, casal, suíte): ")
+            tipo = input("Tipo do quarto (ex: Solteiro, Casal, Suíte): ")
             valor_diaria = float(input("Valor da diária (ex: 200.00): "))
-            status = input("Status (disponível/ocupado/manutenção): ")
+            status = input("Status (Disponível/Ocupado/Manutenção): ")
 
             oracle.write(f"""
                 INSERT INTO quarto (numero_quarto, tipo, valor_diaria, status)

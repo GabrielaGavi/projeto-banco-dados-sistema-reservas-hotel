@@ -31,3 +31,9 @@ CREATE TABLE reserva (
     CONSTRAINT fk_reserva_quarto FOREIGN KEY (numero_quarto)
         REFERENCES quarto(numero_quarto)
 );
+
+CREATE SEQUENCE reserva_seq
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;

@@ -4,7 +4,7 @@ import os
 class Relatorios:
     def __init__(self):
         
-        os.system("cls") #obs.: "clear" para linux e "cls" para windows
+        os.system("clear") #obs.: "clear" para linux e "cls" para windows
         
         self.oracle = OracleQueries()
 
