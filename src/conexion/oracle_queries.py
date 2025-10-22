@@ -87,13 +87,12 @@ class OracleQueries:
         self.conn.commit()
 
     def close(self):
-        """
-        Fecha o cursor e a conexão com o banco de dados.
-        """
-        if self.cur:
-            self.cur.close()
-        if self.conn:
-            self.conn.close()
+        if hasattr(self, "cur") and self.cur:
+            try:
+                self.cur.close()
+            except Exception:
+                pass
+
 
     def executeDDL(self, query: str):
         """

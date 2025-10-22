@@ -47,54 +47,61 @@ def excluir(opcao_excluir: int = 0):
         ctrl_reserva.excluir_reserva()
 
 def run():
+    
     print(tela_inicial.get_updated_screen())
+    input("\nPressione Enter para continuar...")
     config.clear_console()
 
     while True:
         print(config.MENU_PRINCIPAL)
-        opcao = int(input("Escolha uma opção [1-5]: "))
+        try:
+            opcao = int(input("Escolha uma opção [1-5]: "))
+        except ValueError:
+            print("Opção inválida. Digite apenas números.")
+            continue
+        
         config.clear_console(1)
 
-        if opcao == 1: 
+        if opcao == 1:  
             print(config.MENU_RELATORIOS)
             opcao_relatorio = int(input("Escolha uma opção [0-4]: "))
             config.clear_console(1)
             reports(opcao_relatorio)
-            config.clear_console(2)
+            
+            config.clear_console()
 
         elif opcao == 2:  
             print(config.MENU_ENTIDADES)
             opcao_inserir = int(input("Escolha uma opção [1-3]: "))
             config.clear_console(1)
-            inserir(opcao_inserir=opcao_inserir)
-            config.clear_console()
-            print(tela_inicial.get_updated_screen())
+            inserir(opcao_inserir)
+            input("\nPressione Enter para voltar ao menu principal...")
             config.clear_console()
 
         elif opcao == 3:  
             print(config.MENU_ENTIDADES)
             opcao_atualizar = int(input("Escolha uma opção [1-3]: "))
             config.clear_console(1)
-            atualizar(opcao_atualizar=opcao_atualizar)
+            atualizar(opcao_atualizar)
+            input("\nPressione Enter para voltar ao menu principal...")
             config.clear_console()
 
         elif opcao == 4:  
             print(config.MENU_ENTIDADES)
             opcao_excluir = int(input("Escolha uma opção [1-3]: "))
             config.clear_console(1)
-            excluir(opcao_excluir=opcao_excluir)
-            config.clear_console()
-            print(tela_inicial.get_updated_screen())
+            excluir(opcao_excluir)
+            input("\nPressione Enter para voltar ao menu principal...")
             config.clear_console()
 
         elif opcao == 5:
-            print(tela_inicial.get_updated_screen())
-            config.clear_console()
             print("Obrigado por utilizar o nosso sistema.")
-            exit(0)
+            break
+
         else:
-            print("Opção incorreta.")
-            exit(1)
+            print("Opção incorreta. Tente novamente.")
+            input("\nPressione Enter para voltar ao menu principal...")
+            config.clear_console()
 
 if __name__ == "__main__":
     run()
