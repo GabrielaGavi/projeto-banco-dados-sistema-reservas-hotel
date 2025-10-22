@@ -12,7 +12,28 @@ class Controller_Reserva:
         oracle = OracleQueries(can_write=True)
         oracle.connect()
 
-        cpf = input("CPF do hóspede: ")
+        
+        df_hospedes = oracle.sqlToDataFrame("SELECT cpf, nome FROM hospede ORDER BY nome")
+        if df_hospedes.empty:
+            print("Nenhum hóspede cadastrado. Cadastre um hóspede antes de criar uma reserva.")
+            return None
+
+        for i, row in enumerate(df_hospedes.itertuples(), start=1):
+            print(f"{i}) CPF: {row.cpf} - Nome: {row.nome}")
+
+        escolha = input("Selecione o número do hóspede ou digite o CPF diretamente: ").strip()
+        cpf = None
+        try:
+            
+            if escolha.isdigit():
+                idx = int(escolha) - 1
+                cpf = df_hospedes.cpf.values[idx]
+            else:
+                cpf = escolha
+        except Exception:
+            print("Seleção inválida.")
+            return None
+
         numero_quarto = int(input("Número do quarto: "))
         data_checkin = input("Data de check-in (YYYY-MM-DD): ")
         data_checkout = input("Data de check-out (YYYY-MM-DD): ")
